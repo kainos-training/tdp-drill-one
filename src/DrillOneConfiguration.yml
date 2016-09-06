@@ -13,5 +13,5 @@ logging:
   appenders:
     - type: console
     - type: file
-      currentLogFilename: log/discoverydiary.log
+      currentLogFilename: log/drillOne.log
       archive: false

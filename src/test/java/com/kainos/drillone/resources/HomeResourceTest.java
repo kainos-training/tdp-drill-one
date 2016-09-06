@@ -22,7 +22,7 @@ public class HomeResourceTest {
 
     @ClassRule
     public static final ResourceTestRule resources = ResourceTestRule.builder()
-            .addResource(new HomeResource())
+            .addResource(new com.kainos.drillone.resources.HomeResource())
             .addProvider(new ViewMessageBodyWriter(new MetricRegistry(), renders))
             .build();
 
