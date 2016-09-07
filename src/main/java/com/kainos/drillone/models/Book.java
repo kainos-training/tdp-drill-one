@@ -3,7 +3,9 @@ package com.kainos.drillone.models;
 public class Book {
     private int Id;
 
-    private String Author;
+    private String AuthorFirstName;
+
+    private String AuthorSurname;
 
     private String Title;
 
@@ -11,9 +13,10 @@ public class Book {
 
     private String ISBNThirteen;
 
-    public Book(int id, String author, String title, String isbnTen, String isbnThirteen){
+    public Book(int id, String authorFirstName, String authorSurname, String title, String isbnTen, String isbnThirteen){
         this.setId(id);
-        this.setAuthor(author);
+        this.setAuthorFirstName(authorFirstName);
+        this.setAuthorSurname(authorSurname);
         this.setTitle(title);
         this.setISBNTen(isbnTen);
         this.setISBNThirteen(isbnThirteen);
@@ -28,12 +31,12 @@ public class Book {
         Id = id;
     }
 
-    public String getAuthor() {
-        return Author;
+    public String getAuthorFirstName() {
+        return AuthorFirstName;
     }
 
-    public void setAuthor(String author) {
-        Author = author;
+    public void setAuthorFirstName(String authorFirstName) {
+        AuthorFirstName = authorFirstName;
     }
 
     public String getTitle() {
@@ -58,5 +61,13 @@ public class Book {
 
     public void setISBNThirteen(String ISBNThirteen) {
         this.ISBNThirteen = ISBNThirteen;
+    }
+
+    public String getAuthorSurname() {
+        return AuthorSurname;
+    }
+
+    public void setAuthorSurname(String authorSurname) {
+        AuthorSurname = authorSurname;
     }
 }
