@@ -12,4 +12,8 @@ public class LibrarianView extends View {
         super("/Views/book/book.ftl");
         this.bookList=bookList;
     }
+
+    public List<Book> getBookList(){
+        return bookList;
+    }
 }

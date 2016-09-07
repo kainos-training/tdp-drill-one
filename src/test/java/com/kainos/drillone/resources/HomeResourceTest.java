@@ -29,14 +29,4 @@ public class HomeResourceTest {
     @Before
     public void setup() {
     }
-
-    @Test
-    public void testHome() {
-        Response response = resources.client()
-                .target("")
-                .request(MediaType.TEXT_HTML_TYPE)
-                .get();
-
-        assertEquals(200, response.getStatus());
-    }
 }

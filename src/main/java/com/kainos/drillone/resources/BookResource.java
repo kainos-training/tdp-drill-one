@@ -2,7 +2,7 @@ package com.kainos.drillone.resources;
 import com.codahale.metrics.annotation.Timed;
 import com.kainos.drillone.DataStore;
 import com.kainos.drillone.config.DrillOneConfiguration;
-import com.kainos.drillone.views.Index;
+import com.kainos.drillone.views.LibrarianView;
 import io.dropwizard.views.View;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -22,13 +22,14 @@ public class BookResource {
     }
 
 
+
     @GET
     @Timed
     @Produces(MediaType.TEXT_HTML)
-    public View Index() {
-        return new Index();
-
+    public View LibrarianView(){
+        return new LibrarianView(dataStore.getBooks());
     }
+
 
 
 }
