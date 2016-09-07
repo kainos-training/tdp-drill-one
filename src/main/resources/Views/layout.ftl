@@ -15,8 +15,26 @@
 
     <div class="container">
         <div class="logo">
-            <img src="/assets/images/logo.png" alt="Kainos-Logo">
+            <a href="http://localhost:8901/">
+                <img src="/assets/images/logo.png" alt="Kainos-Logo">
+            </a>
         </div>
+    </div>
+    <div class="container">
+    	<div class="row">
+            <div class="col-md-6">
+                <div id="custom-search-input">
+                    <div class="input-group col-md-12">
+                        <input type="text" class="form-control input-lg" placeholder="Title, Author, description... " />
+                        <span class="input-group-btn">
+                            <button class="btn btn-info btn-lg" type="button">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+    	</div>
     </div>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
