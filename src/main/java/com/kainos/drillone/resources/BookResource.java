@@ -3,7 +3,7 @@ import com.codahale.metrics.annotation.Timed;
 import com.kainos.drillone.DataStore;
 import com.kainos.drillone.config.DrillOneConfiguration;
 import com.kainos.drillone.models.Book;
-import com.kainos.drillone.views.BookView;
+import com.kainos.drillone.views.LibrarianView;
 import io.dropwizard.views.View;
 
 import javax.ws.rs.GET;
@@ -13,7 +13,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 
-@Path("")
+@Path("books")
 public class BookResource {
 
     public final DataStore dataStore;
@@ -21,21 +21,18 @@ public class BookResource {
 
     public BookResource(DataStore dataStore, DrillOneConfiguration configuration){
         this.dataStore=dataStore;
+        dataStore.initialiseDummyData();
         this.configuration=configuration;
     }
 
-
-
     @GET
     @Timed
+    @Path("librarian")
     @Produces(MediaType.TEXT_HTML)
     public View LibrarianView(){
 
         List<Book> books = dataStore.getBooks();
-        System.out.println("===test===");
-        System.out.println(books.get(0).getAuthorfirstName());
-        books.get(0).setTitle("test");
-        return new BookView(books);
+        return new LibrarianView(books);
     }
 
 

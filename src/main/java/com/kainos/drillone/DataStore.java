@@ -9,6 +9,47 @@ import java.util.UUID;
 
 public class DataStore {
 
+	public void initialiseDummyData(){
+		Book book = new Book();
+		book.setIsbnTen("1234567890");
+		book.setIsbnThirteen("1234567890123");
+		book.setTitle("programming 101");
+		book.setAuthorfirstName("chris");
+		book.setAuthorSurname("gill");
+		book.setId(1);
+
+		books.add(book);
+
+		book = new Book();
+		book.setIsbnTen("1234567540");
+		book.setIsbnThirteen("12345as790123");
+		book.setTitle("agile 101");
+		book.setAuthorfirstName("chris");
+		book.setAuthorSurname("gill");
+		book.setId(2);
+
+		books.add(book);
+		book = new Book();
+		book.setIsbnTen("1234567540");
+		book.setIsbnThirteen("12345as790123");
+		book.setTitle("agile 102");
+		book.setAuthorfirstName("chris");
+		book.setAuthorSurname("gill");
+		book.setId(3);
+
+		books.add(book);
+
+		book = new Book();
+		book.setIsbnTen("12345s7540");
+		book.setIsbnThirteen("12341as790123");
+		book.setTitle("java for dummies");
+		book.setAuthorfirstName("chris");
+		book.setAuthorSurname("gill");
+		book.setId(4);
+
+		books.add(book);
+	}
+
 	private static List<Person> people = Lists.newArrayList();
 	private static List<Book> books = Lists.newArrayList();
 
@@ -17,16 +58,6 @@ public class DataStore {
 	}
 
 	public List<Book> getBooks() {
-		Book book = new Book();
-		book.setIsbnTen("test");
-		book.setIsbnThirteen("t est asd");
-		book.setTitle("programming 101");
-		book.setAuthorfirstName("chris");
-		book.setAuthorSurname("gill");
-		book.setId(1);
-
-		books.add(book);
-
 		return books;
 	}
 
