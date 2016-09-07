@@ -6,14 +6,14 @@ import java.util.List;
 
 public class LibrarianView extends View {
 
-    private final List<Book> bookList;
+    private final List<Book> books;
 
-    public LibrarianView(List<Book> bookList) {
+    public LibrarianView(List<Book> books) {
         super("/Views/book/book.ftl");
-        this.bookList=bookList;
+        this.books =books;
     }
 
-    public List<Book> getBookList(){
-        return bookList;
+    public List<Book> getBooks(){
+        return books;
     }
 }

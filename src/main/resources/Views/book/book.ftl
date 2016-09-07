@@ -1,4 +1,4 @@
-<#-- @ftlvariable name="" type="com.kainos.discoverydiary.views.LibrarianView" -->
+<#-- @ftlvariable name="" type="com.kainos.drillone.views.LibrarianView" -->
 <#import "../layout.ftl" as layoutTemplate>
 
 <@layoutTemplate.layout>
@@ -8,25 +8,23 @@
 
 <table class="table">
     <thead>
-        <th>Name</th>
-        <th>Age</th>
+        <th>Author</th>
+        <th>Title</th>
     </thead>
 
     <tbody>
-        <#list people as person>
+        <#list books as book>
             <tr>
             <td>
-                ${person.name}
+                ${book.Title}
             </td>
             <td>
-                ${person.age}
+                ${book.Title}
             </td>
             </tr>
         </#list>
 
     </tbody>
 </table>
-
-<a class="btn btn-default" href="/people/add">New</a>
 
 </@layoutTemplate.layout>

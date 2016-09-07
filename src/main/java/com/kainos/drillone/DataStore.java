@@ -16,7 +16,9 @@ public class DataStore {
 		return people;
 	}
 
-	public List<Book> getBooks() { return books; }
+	public List<Book> getBooks() {
+		books.add(new Book(1, "chris", "gill", "programming 101", "test", "test2"));
+		return books; }
 
 	public void registerPerson(UUID id, String name, Integer age) {
 		Person newPerson = new Person();
