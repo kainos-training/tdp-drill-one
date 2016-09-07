@@ -1,6 +1,7 @@
 package com.kainos.drillone;
 
 import com.kainos.drillone.config.DrillOneConfiguration;
+import com.kainos.drillone.resources.BookResource;
 import com.kainos.drillone.resources.HomeResource;
 import com.kainos.drillone.resources.PeopleResource;
 import io.dropwizard.Application;
@@ -21,9 +22,11 @@ public class DrillOneApplication extends Application<DrillOneConfiguration> {
     public void run(DrillOneConfiguration discoveryDiaryConfiguration, Environment environment) throws Exception {
         final HomeResource homeResource = new HomeResource();
         final PeopleResource peopleResource = new PeopleResource(new DataStore(), discoveryDiaryConfiguration);
+        final BookResource bookResource = new BookResource(new DataStore(), discoveryDiaryConfiguration);
 
         environment.jersey().register(homeResource);
         environment.jersey().register(peopleResource);
+        environment.jersey().register(bookResource);
     }
 
     public static void main(String[] args) throws Exception {
