@@ -20,11 +20,9 @@ public class DrillOneApplication extends Application<DrillOneConfiguration> {
 
     public void run(DrillOneConfiguration discoveryDiaryConfiguration, Environment environment) throws Exception {
         final HomeResource homeResource = new HomeResource();
-        final PeopleResource peopleResource = new PeopleResource(new DataStore(), discoveryDiaryConfiguration);
         final BookResource bookResource=new BookResource(new DataStore(), discoveryDiaryConfiguration);
 
         environment.jersey().register(homeResource);
-        environment.jersey().register(peopleResource);
         environment.jersey().register(bookResource);
     }
 
