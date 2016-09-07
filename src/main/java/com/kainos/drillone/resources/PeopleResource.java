@@ -38,7 +38,7 @@ public class PeopleResource {
     @Timed
     @Produces(MediaType.TEXT_HTML)
     public View index(){
-        return new PeopleListView(dataStore.getPeople());
+        return new PeopleListView(dataStore.getBooks());
     }
 
     @Path("add")

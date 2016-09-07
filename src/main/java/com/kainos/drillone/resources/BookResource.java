@@ -3,8 +3,9 @@ import com.codahale.metrics.annotation.Timed;
 import com.kainos.drillone.DataStore;
 import com.kainos.drillone.config.DrillOneConfiguration;
 import com.kainos.drillone.models.Book;
-import com.kainos.drillone.views.LibrarianView;
+import com.kainos.drillone.views.BookView;
 import io.dropwizard.views.View;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -32,9 +33,9 @@ public class BookResource {
 
         List<Book> books = dataStore.getBooks();
         System.out.println("===test===");
-        System.out.println(books.get(0).getAuthorFirstName());
-
-        return new LibrarianView(dataStore.getBooks());
+        System.out.println(books.get(0).getAuthorfirstName());
+        books.get(0).setTitle("test");
+        return new BookView(books);
     }
 
 

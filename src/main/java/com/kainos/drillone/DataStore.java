@@ -17,8 +17,18 @@ public class DataStore {
 	}
 
 	public List<Book> getBooks() {
-		books.add(new Book(1, "chris", "gill", "programming 101", "test", "test2"));
-		return books; }
+		Book book = new Book();
+		book.setIsbnTen("test");
+		book.setIsbnThirteen("t est asd");
+		book.setTitle("programming 101");
+		book.setAuthorfirstName("chris");
+		book.setAuthorSurname("gill");
+		book.setId(1);
+
+		books.add(book);
+
+		return books;
+	}
 
 	public void registerPerson(UUID id, String name, Integer age) {
 		Person newPerson = new Person();
