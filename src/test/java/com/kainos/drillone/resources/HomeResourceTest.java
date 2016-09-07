@@ -1,4 +1,4 @@
-package com.kainos.discoverydiary.resources;
+package com.kainos.drillone.resources;
 
 import com.codahale.metrics.MetricRegistry;
 import com.google.common.collect.Lists;
