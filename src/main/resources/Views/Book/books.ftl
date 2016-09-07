@@ -3,8 +3,8 @@
 
 <@layoutTemplate.layout>
 
-<h1>People list</h1>
-<p class="lead">Registered people.</p>
+<h1>KLibrary</h1>
+<p class="lead">Books in Library.</p>
 
 <table class="table">
     <thead>
@@ -23,14 +23,12 @@
                 ${book.authorfirstName} ${book.authorSurname}
             </td>
             <td>
-                ${book.isbnTen}
+                ${book.isbnTen} / ${book.isbnThirteen}
             </td>
             </tr>
         </#list>
 
     </tbody>
 </table>
-
-<a class="btn btn-default" href="/people/add">New</a>
 
 </@layoutTemplate.layout>
