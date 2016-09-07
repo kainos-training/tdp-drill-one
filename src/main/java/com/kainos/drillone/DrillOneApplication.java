@@ -3,7 +3,6 @@ package com.kainos.drillone;
 import com.kainos.drillone.config.DrillOneConfiguration;
 import com.kainos.drillone.resources.BookResource;
 import com.kainos.drillone.resources.HomeResource;
-import com.kainos.drillone.resources.PeopleResource;
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.forms.MultiPartBundle;

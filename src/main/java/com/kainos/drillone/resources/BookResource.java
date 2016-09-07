@@ -16,13 +16,15 @@ import java.util.List;
 @Path("books")
 public class BookResource {
 
-    public final DataStore dataStore;
+    final DataStore dataStore;
     final DrillOneConfiguration configuration;
 
     public BookResource(DataStore dataStore, DrillOneConfiguration configuration){
         this.dataStore=dataStore;
-        dataStore.initialiseDummyData();
         this.configuration=configuration;
+
+
+        dataStore.initialiseDummyData();
     }
 
     @GET
@@ -34,7 +36,4 @@ public class BookResource {
         List<Book> books = dataStore.getBooks();
         return new LibrarianView(books);
     }
-
-
-
 }
