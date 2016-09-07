@@ -5,3 +5,25 @@ body {
   padding: 40px 15px;
   text-align: center;
 }
+div.logo img{
+  margin-top: -20px;
+}
+div.container h1{
+    margin-top: 100px;
+}
+.navbar-fixed-top{
+    top: 125px;
+}
+.navbar-inverse {
+    background-color: #e6e6e6;
+}
+.navbar-nav>li>a {
+    border-bottom: 4px solid #e6e6e6 !important;
+}
+.navbar-nav>li>a:hover {
+    border-bottom: 4px solid #00EBFF !important;
+}
+
+ul.nav.navbar-nav {
+    margin-top: 4px;
+}

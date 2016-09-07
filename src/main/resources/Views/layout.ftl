@@ -13,6 +13,11 @@
   </head>
   <body>
 
+    <div class="container">
+        <div class="logo">
+            <img src="/assets/images/logo.png" alt="Kainos-Logo">
+        </div>
+    </div>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -22,10 +27,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/home">Discovery Diary</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
+            <li><a href="/home">All Books</a></li>
             <li><a href="/people">People</a></li>
           </ul>
         </div><!--/.nav-collapse -->
