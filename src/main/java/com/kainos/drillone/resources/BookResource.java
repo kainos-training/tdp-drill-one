@@ -13,6 +13,9 @@ import org.glassfish.jersey.media.multipart.FormDataParam;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriBuilder;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +23,7 @@ import java.util.List;
  * Created by williamst on 07/09/2016.
  */
 
-@Path("book")
+@Path("books")
 public class BookResource {
 
     private final DataStore dataStore;
@@ -30,6 +33,7 @@ public class BookResource {
     public BookResource(DataStore dataStore, DrillOneConfiguration configuration) {
         this.dataStore = dataStore;
         this.configuration = configuration;
+        dataStore.mockList();
     }
 
     @Path("update")
@@ -44,16 +48,20 @@ public class BookResource {
     @Produces(MediaType.TEXT_HTML)
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public View doUpdate(@FormDataParam("id") int id, @FormDataParam("title") String title,
-                         @FormDataParam("author") String author, @FormDataParam("ISBNTen") String ISBNTen,
+                         @FormDataParam("authorFirstName") String authorFname,
+                         @FormDataParam("authorSurname") String authorLname,
+                         @FormDataParam("ISBNTen") String ISBNTen,
                          @FormDataParam("ISBNThirteen") String ISBNThirteen){
 
-        System.out.println(id + title + author + ISBNTen + ISBNThirteen);
+        System.out.println(id + title + authorFname + ISBNTen + ISBNThirteen);
         Book updatedBook = dataStore.getBookById(id);
 
         List<String> errors = Lists.newArrayList();
 
-        if(!Strings.isNullOrEmpty(author) && !Strings.isNullOrEmpty(title)) {
-            updatedBook.setAuthorFirstName(author);
+        if(!Strings.isNullOrEmpty(authorFname) && !Strings.isNullOrEmpty(authorLname)
+                && !Strings.isNullOrEmpty(title)) {
+            updatedBook.setAuthorFirstName(authorFname);
+            updatedBook.setAuthorSurname(authorLname);
             updatedBook.setTitle(title);
         }else{
             errors.add("You must enter a Title and Author");
@@ -63,15 +71,15 @@ public class BookResource {
         if(!Strings.isNullOrEmpty(ISBNTen) ^ !Strings.isNullOrEmpty(ISBNThirteen)) {
             updatedBook.setIsbnTen(ISBNTen);
             updatedBook.setIsbnThirteen(ISBNThirteen);
-        }else{
+        } else {
             //If two ISBNs are entered, make sure they match
             if(!Strings.isNullOrEmpty(ISBNTen) && !Strings.isNullOrEmpty(ISBNThirteen)){
                 if(checkISBNFormatting(ISBNTen, ISBNThirteen)){
                     updatedBook.setIsbnTen(ISBNTen);
                     updatedBook.setIsbnThirteen(ISBNThirteen);
-                }else{errors.add("Your ISBN numbers don't match.");}
+                } else {errors.add("Your ISBN numbers don't match.");}
             //If none are entered, make sure user is alerted to enter one.
-            }else {
+            } else {
                 errors.add("You must enter at least one form of ISBN");
             }
         }
@@ -79,9 +87,9 @@ public class BookResource {
             return new BookUpdateView(errors, updatedBook);
         }
 
-
-
-        return new BookUpdateView(new ArrayList<String>(), updatedBook);
+        URI bookListUri = UriBuilder.fromUri("/books/librarian").build();
+        Response response = Response.seeOther(bookListUri).build();
+        throw new WebApplicationException(response);
     }
 
     public Boolean checkISBNFormatting(String ISBNTen, String ISBNThirteen){

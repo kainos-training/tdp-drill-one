@@ -24,6 +24,8 @@
                         ISBN10: ${book.isbnTen}
                          <br>
                         ISBN13: ${book.isbnThirteen}
+                        <br>
+                        <a href="/books/update?id=${book.id}" class="btn btn-defaul">Update</a>
                     </td>
                     </tr>
         </#list>

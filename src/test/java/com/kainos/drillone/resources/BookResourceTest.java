@@ -36,7 +36,7 @@ public class BookResourceTest {
 
         verify(dataStore).getBooks();
         assertEquals(view.getLibrary().size(), 0);
-        assertEquals("/Views/Book/books.ftl", view.getTemplateName());
+        assertEquals("/Views/book/books.ftl", view.getTemplateName());
     }
 
     @Test
@@ -74,6 +74,6 @@ public class BookResourceTest {
         assertEquals("chris", books.get(1).getAuthorFirstName());
         assertEquals("gill", books.get(1).getAuthorSurname());
         assertEquals(2, books.get(1).getId());
-        assertEquals("/Views/Book/books.ftl", view.getTemplateName());
+        assertEquals("/Views/book/books.ftl", view.getTemplateName());
     }
 }

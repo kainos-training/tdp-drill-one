@@ -10,7 +10,7 @@ public class LibrarianView extends View {
     private final List<Book> library;
 
     public LibrarianView(List<Book> bookList) {
-        super("/Views/Book/books.ftl");
+        super("/Views/book/books.ftl");
         this.library = bookList;
     }
 
