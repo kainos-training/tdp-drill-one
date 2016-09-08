@@ -9,7 +9,7 @@ public class BookAddView extends View {
     private final List<String> errors;
 
     public BookAddView(List<String> errors) {
-        super("/Views/book/add.ftl");
+        super("/Views/Book/add.ftl");
         this.errors = errors;
     }
 

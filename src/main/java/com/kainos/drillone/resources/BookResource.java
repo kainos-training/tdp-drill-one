@@ -1,17 +1,17 @@
 package com.kainos.drillone.resources;
 
 import com.codahale.metrics.annotation.Timed;
-import com.google.common.collect.Lists;
 import com.kainos.drillone.DataStore;
-import com.kainos.drillone.views.BookAddView;
-import com.kainos.drillone.views.PeopleAddView;
-import com.kainos.drillone.views.PeopleListView;
 import com.kainos.drillone.config.DrillOneConfiguration;
+import com.kainos.drillone.models.Book;
+import com.kainos.drillone.views.BookAddView;
+import com.kainos.drillone.views.LibrarianView;
 import io.dropwizard.views.View;
+import org.assertj.core.util.Lists;
 import org.assertj.core.util.Strings;
+import org.assertj.core.util.SystemProperties;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -20,12 +20,10 @@ import javax.ws.rs.core.UriBuilder;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
-@Path("/book")
+
+@Path("books")
 public class BookResource {
-
-    final static Logger LOGGER = LoggerFactory.getLogger(BookResource.class);
 
     final DataStore dataStore;
     final DrillOneConfiguration configuration;
@@ -35,21 +33,31 @@ public class BookResource {
         this.configuration = configuration;
     }
 
+    @GET
+    @Timed
+    @Path("librarian")
+    @Produces(MediaType.TEXT_HTML)
+    public View LibrarianView(){
+
+        List<Book> books = dataStore.getBooks();
+        return new LibrarianView(books);
+    }
+
 
     @Path("/add")
     @GET
     @Timed
     @Produces(MediaType.TEXT_HTML)
-    public View add(){
+    public View BookAddView(){
         return new BookAddView(new ArrayList<String>());
     }
 
-    @Path("/add")
+    @Path("/addbook")
     @POST
     @Timed
     @Produces(MediaType.TEXT_HTML)
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    public View addBook(
+    public View AddBook(
             @FormDataParam("title") String title,
             @FormDataParam("authorFirstName") String authorFirstName,
             @FormDataParam("authorLastName") String authorLastName,
@@ -57,6 +65,7 @@ public class BookResource {
             @FormDataParam("ISBN13") String ISBN13
     ){
 
+        System.out.println("book add hit");
         List<String> errors = Lists.newArrayList();
 
         if (Strings.isNullOrEmpty(title)) {
@@ -101,11 +110,12 @@ public class BookResource {
             return new BookAddView(errors);
         }
 
-        LOGGER.info("Adding book " + String.format("title: %s author first name: %s author last name: %s ISBN10: %s ISBN13: %s", title, authorFirstName, authorLastName, ISBN10, ISBN13));
         dataStore.addBook(title, authorFirstName, authorLastName, ISBN10, ISBN13);
 
-        URI bookListUri = UriBuilder.fromUri("/book").build();
+        URI bookListUri = UriBuilder.fromUri("/books/librarian").build();
         Response response = Response.seeOther(bookListUri).build();
         throw new WebApplicationException(response); // valid way to redirect in dropwizard
     }
+
 }
+

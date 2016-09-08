@@ -5,7 +5,7 @@
 <h1>Add a book</h1>
 <p class="lead">Please provide details of the book.</p>
 
-<form enctype="multipart/form-data" action="/book/add" method="post" autocomplete="off">
+<form enctype="multipart/form-data" action="/books/addbook" method="post" autocomplete="off">
 
     <#if errors??>
         <div class="bg-danger text-danger">
@@ -49,7 +49,7 @@
     </div>
 
     <input type="submit" value="Add Book" class="btn btn-primary" />
-    <a class="btn btn-default" href="/book">Cancel</a>
+    <a class="btn btn-default" href="/books/librarian">Cancel</a>
 
 
 

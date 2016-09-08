@@ -1,51 +1,80 @@
-/*
+
 package com.kainos.drillone.resources;
 
-import com.codahale.metrics.MetricRegistry;
-import com.google.common.collect.Lists;
 import com.kainos.drillone.DataStore;
 import com.kainos.drillone.config.DrillOneConfiguration;
-import io.dropwizard.testing.junit.ResourceTestRule;
-import io.dropwizard.views.ViewMessageBodyWriter;
-import io.dropwizard.views.ViewRenderer;
-import io.dropwizard.views.freemarker.FreemarkerViewRenderer;
+import com.kainos.drillone.models.Book;
+import com.kainos.drillone.views.LibrarianView;
 import org.junit.Before;
-import org.junit.ClassRule;
 import org.junit.Test;
 
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.*;
 
+/**
+ * Created by christopherg on 07/09/2016.
+ */
 public class BookResourceTest {
-
-    private static List<ViewRenderer> renders = Lists.<ViewRenderer>newArrayList(new FreemarkerViewRenderer());
-    private BookResource bookResource = new BookResource(new DataStore(), new DrillOneConfiguration());
-
-    @ClassRule
-    public static final ResourceTestRule resources = ResourceTestRule.builder()
-            .addResource(new com.kainos.drillone.resources.BookResource(new DataStore(), new DrillOneConfiguration()))
-            .addProvider(new ViewMessageBodyWriter(new MetricRegistry(), renders))
-            .build();
+    private DrillOneConfiguration configuration;
+    private DataStore dataStore;
+    private BookResource resource;
 
     @Before
-    public void setup() {
+    public void setup(){
+        configuration = new DrillOneConfiguration();
+        dataStore = mock(DataStore.class);
+        resource = new BookResource(dataStore, configuration);
     }
 
     @Test
-    public void testAdd() {
-        Response response = resources.client()
-                .target("/book/add")
-                .request(MediaType.TEXT_HTML_TYPE)
-                .get();
+    public void Index_WhenCalledForEmptyList_ReturnsViewWithEmptyList(){
+        when(dataStore.getBooks()).thenReturn(new ArrayList<Book>());
 
-        assertEquals(200, response.getStatus());
+        LibrarianView view = (LibrarianView)resource.LibrarianView();
+
+        verify(dataStore).getBooks();
+        assertEquals(view.getLibrary().size(), 0);
+        assertEquals("/Views/Book/books.ftl", view.getTemplateName());
     }
 
     @Test
-    public void testEmptyTitleReturnsError(){
-        bookResource.addBook("", "Aoife", "Finnegan", "1234567890", "1234567890123");
+    public void Index_WhenCalledForEmptyList_ReturnsViewWithPopulatedList(){
+        List<Book> books = new ArrayList<Book>();
+        Book book = new Book();
+        book.setIsbnTen("1234567890");
+        book.setIsbnThirteen("1234567890123");
+        book.setTitle("programming 101");
+        book.setAuthorFirstName("chris");
+        book.setAuthorSurname("gill");
+        book.setId(1);
+
+        books.add(book);
+
+        book = new Book();
+        book.setIsbnTen("1234567540");
+        book.setIsbnThirteen("12345as790123");
+        book.setTitle("agile 101");
+        book.setAuthorFirstName("chris");
+        book.setAuthorSurname("gill");
+        book.setId(2);
+
+        books.add(book);
+
+        when(dataStore.getBooks()).thenReturn(books);
+
+        LibrarianView view = (LibrarianView)resource.LibrarianView();
+
+        verify(dataStore).getBooks();
+        assertEquals(view.getLibrary().size(), 2);
+        assertEquals("1234567540", books.get(1).getIsbnTen());
+        assertEquals("12345as790123", books.get(1).getIsbnThirteen());
+        assertEquals("agile 101", books.get(1).getTitle());
+        assertEquals("chris", books.get(1).getAuthorFirstName());
+        assertEquals("gill", books.get(1).getAuthorSurname());
+        assertEquals(2, books.get(1).getId());
+        assertEquals("/Views/Book/books.ftl", view.getTemplateName());
     }
-} */
+}
