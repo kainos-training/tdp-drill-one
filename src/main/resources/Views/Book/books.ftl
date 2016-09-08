@@ -17,6 +17,9 @@
          <#list library as book>
                     <tr>
                     <td>
+                        <div class= "books_img">
+                            <img src="${book.bookImageLink}">
+                        </div>
                         <b>${book.title}</b>
                         <br>
                         by ${book.authorFirstName} ${book.authorSurname}

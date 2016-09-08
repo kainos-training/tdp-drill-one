@@ -1,5 +1,7 @@
 package com.kainos.drillone.models;
 
+import org.assertj.core.util.Strings;
+
 public class Book {
     private int Id;
 
@@ -13,7 +15,28 @@ public class Book {
 
     private String isbnThirteen;
 
+    private String bookImageLink;
+
+    private String defaultBookImageLink="https://images-na.ssl-images-amazon.com/images/I/51tjK8swIOL.jpg";
+
     public Book(){};
+
+    public Book(int id, String authorFirstName, String authorSurname, String title, String isbnTen, String isbnThirteen,
+                String bookImageLink){
+        this.setId(id);
+        this.setAuthorFirstName(authorFirstName);
+        this.setAuthorSurname(authorSurname);
+        this.setTitle(title);
+        this.setIsbnTen(isbnTen);
+        this.setIsbnThirteen(isbnThirteen);
+        if(Strings.isNullOrEmpty(bookImageLink)){
+            this.setBookImageLink(defaultBookImageLink);
+        }
+        else{
+            this.setBookImageLink(bookImageLink);
+        }
+    }
+
 
     public Book(int id, String authorFirstName, String authorSurname, String title, String isbnTen, String isbnThirteen){
         this.setId(id);
@@ -22,7 +45,11 @@ public class Book {
         this.setTitle(title);
         this.setIsbnTen(isbnTen);
         this.setIsbnThirteen(isbnThirteen);
+        this.setBookImageLink("https://images-na.ssl-images-amazon.com/images/I/51tjK8swIOL.jpg");
+        System.out.print(bookImageLink);
+
     }
+
 
 
     public int getId() {
@@ -72,4 +99,14 @@ public class Book {
     public void setAuthorSurname(String authorSurname) {
         this.authorSurname = authorSurname;
     }
+
+    public String getBookImageLink() {
+        if(this.bookImageLink == null){
+            return "https://images-na.ssl-images-amazon.com/images/I/51tjK8swIOL.jpg";
+        }else{
+            return this.bookImageLink;
+        }
+    }
+
+    public void setBookImageLink(String bookLink) {this.bookImageLink = bookLink;}
 }

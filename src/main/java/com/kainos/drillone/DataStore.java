@@ -2,6 +2,7 @@ package com.kainos.drillone;
 
 import com.google.common.collect.Lists;
 import com.kainos.drillone.models.Book;
+import org.assertj.core.util.Strings;
 
 import java.util.List;
 
