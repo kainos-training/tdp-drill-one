@@ -147,15 +147,15 @@ public class BookResource {
 
     public List<String> Validate(String title, String authorFirstName, String authorLastName, String ISBN10, String ISBN13){
         List<String> errors = Lists.newArrayList();
-        if (Strings.isNullOrEmpty(title)) {
+        if (Strings.isNullOrEmpty(title) || title.length() >= 200) {
             errors.add("Enter a valid book title");
         }
 
-        if (Strings.isNullOrEmpty(authorFirstName)) {
+        if (Strings.isNullOrEmpty(authorFirstName )  || authorFirstName.length() >= 200) {
             errors.add("Enter a valid author first name");
         }
 
-        if (Strings.isNullOrEmpty(authorLastName)) {
+        if (Strings.isNullOrEmpty(authorLastName)  || authorLastName.length() >= 200) {
             errors.add("Enter a valid author last name");
         }
 
