@@ -6,6 +6,7 @@ import com.kainos.drillone.config.DrillOneConfiguration;
 import com.kainos.drillone.models.Book;
 import com.kainos.drillone.views.BookUpdateView;
 import io.dropwizard.views.View;
+import org.assertj.core.util.Strings;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 
 import javax.ws.rs.*;
@@ -47,19 +48,25 @@ public class BookResource {
 
         System.out.println(id + title + author + ISBNTen + ISBNThirteen);
         Book updatedBook = dataStore.getBookById(id);
+
         List<String> errors = Lists.newArrayList();
 
-        if(author != null && title != null) {
+        if(!Strings.isNullOrEmpty(author) && !Strings.isNullOrEmpty(title)) {
             updatedBook.setAuthor(author);
             updatedBook.setTitle(title);
         }else{
             errors.add("You must enter a Title and Author");
         }
-        if(ISBNTen != null || ISBNThirteen != null) {
+
+        //Make sure at least one ISBN is entered
+        if(!Strings.isNullOrEmpty(ISBNTen) || !Strings.isNullOrEmpty(ISBNThirteen)) {
             updatedBook.setISBNTen(ISBNTen);
             updatedBook.setISBNThirteen(ISBNThirteen);
         }else{
             errors.add("You must enter at least one form of ISBN");
+        }
+        if(!errors.isEmpty()){
+            return new BookUpdateView(errors, updatedBook);
         }
 
 
@@ -67,4 +74,9 @@ public class BookResource {
         return new BookUpdateView(new ArrayList<String>(), updatedBook);
     }
 
+//    public Boolean checkISBNFormatting(String ISBNTen, String ISBNThirteen){
+//        if(ISBNThirteen.matches("978" + ISBNTen + )){}
+//    }
+
 }
+

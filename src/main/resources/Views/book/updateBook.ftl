@@ -32,11 +32,11 @@
     </div>
     <div class="form-group">
         <label for="ISBNTen">ISBN Ten</label>
-        <input name="ISBNTen" type="text" placeholder="title" class="form-control" value ="${book.ISBNTen}"/>
+        <input name="ISBNTen" type="text" placeholder="ISBN" class="form-control" value ="${book.ISBNTen}"/>
      </div>
      <div class="form-group">
              <label for="ISBNThirteen">ISBN Thirteen</label>
-             <input name="ISBNThirteen" type="text" placeholder="title" class="form-control"
+             <input name="ISBNThirteen" type="text" placeholder="ISBN" class="form-control"
              value ="${book.ISBNThirteen}"/>
      </div>
 
