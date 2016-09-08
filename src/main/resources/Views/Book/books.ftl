@@ -31,8 +31,6 @@
         </#list>
     </tbody>
 </table>
-
-<a class="btn btn-default" href="/books/add">Add Book</a>
 </@layoutTemplate.layout>
 
 <script type="text/javascript">

@@ -33,7 +33,10 @@
           <ul class="nav navbar-nav">
             <li><a href="/books/librarian">Books</a></li>
           </ul>
-        </div><!--/.nav-collapse -->
+          <ul class="nav navbar-nav">
+            <li><a href="/books/add">Add Book</a></li>
+          </ul>
+         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
