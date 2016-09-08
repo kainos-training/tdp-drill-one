@@ -17,6 +17,11 @@
          <#list library as book>
                     <tr>
                     <td>
+                    <!-- Remove this when adding images datatable -->
+                            <div class="books_img">
+                                    <!-- <img src="/assets/images/book.png" alt="Book"> -->
+                                    <img src="https://images-na.ssl-images-amazon.com/images/I/51tjK8swIOL.jpg" alt="Image of the Book">
+                            </div>
                         <b>${book.title}</b>
                         <br>
                         by ${book.authorfirstName} ${book.authorSurname}
