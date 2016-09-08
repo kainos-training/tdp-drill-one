@@ -9,24 +9,21 @@
 
 <table class="table">
     <thead>
-        <th>Title</th>
-        <th>Author</th>
-        <th>ISBN</th>
+        <th>
+        </th>
     </thead>
 
     <tbody>
-        <#list library as book>
-            <tr>
-            <td>
-                ${book.title}
-            </td>
-            <td>
-                ${book.authorfirstName} ${book.authorSurname}
-            </td>
-            <td>
-                ${book.isbnTen} / ${book.isbnThirteen}
-            </td>
-            </tr>
+         <#list library as book>
+                    <tr>
+                    <td>
+                        <b>${book.title}</b>
+                        <br>
+                        by ${book.authorfirstName} ${book.authorSurname}
+                        <br>
+                        ISBN: ${book.isbnTen} / ${book.isbnThirteen}
+                    </td>
+                    </tr>
         </#list>
 
     </tbody>
@@ -36,6 +33,10 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $(".table").DataTable();
+        $(".table").DataTable({
+            "bPaginate": false,
+            "bLengthChange": false,
+            "ordering": false,
+        });
     });
 </script>
