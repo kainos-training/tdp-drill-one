@@ -3,23 +3,25 @@ package com.kainos.drillone.models;
 public class Book {
     private int Id;
 
-    private String AuthorFirstName;
+    private String authorFirstName;
 
-    private String AuthorSurname;
+    private String authorSurname;
 
-    private String Title;
+    private String title;
 
-    private String ISBNTen;
+    private String isbnTen;
 
-    private String ISBNThirteen;
+    private String isbnThirteen;
+
+    public Book(){};
 
     public Book(int id, String authorFirstName, String authorSurname, String title, String isbnTen, String isbnThirteen){
         this.setId(id);
         this.setAuthorFirstName(authorFirstName);
         this.setAuthorSurname(authorSurname);
         this.setTitle(title);
-        this.setISBNTen(isbnTen);
-        this.setISBNThirteen(isbnThirteen);
+        this.setIsbnTen(isbnTen);
+        this.setIsbnThirteen(isbnThirteen);
     }
 
 
@@ -32,42 +34,42 @@ public class Book {
     }
 
     public String getAuthorFirstName() {
-        return AuthorFirstName;
+        return authorFirstName;
     }
 
     public void setAuthorFirstName(String authorFirstName) {
-        AuthorFirstName = authorFirstName;
+        this.authorFirstName = authorFirstName;
     }
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public void setTitle(String title) {
-        Title = title;
+        this.title = title;
     }
 
-    public String getISBNTen() {
-        return ISBNTen;
+    public String getIsbnTen() {
+        return isbnTen;
     }
 
-    public void setISBNTen(String ISBNTen) {
-        this.ISBNTen = ISBNTen;
+    public void setIsbnTen(String isbnTen) {
+        this.isbnTen = isbnTen;
     }
 
-    public String getISBNThirteen() {
-        return ISBNThirteen;
+    public String getIsbnThirteen() {
+        return isbnThirteen;
     }
 
-    public void setISBNThirteen(String ISBNThirteen) {
-        this.ISBNThirteen = ISBNThirteen;
+    public void setIsbnThirteen(String isbnThirteen) {
+        this.isbnThirteen = isbnThirteen;
     }
 
     public String getAuthorSurname() {
-        return AuthorSurname;
+        return authorSurname;
     }
 
     public void setAuthorSurname(String authorSurname) {
-        AuthorSurname = authorSurname;
+        this.authorSurname = authorSurname;
     }
 }
