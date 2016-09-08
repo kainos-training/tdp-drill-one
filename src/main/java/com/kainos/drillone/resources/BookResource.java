@@ -74,9 +74,13 @@ public class BookResource {
         return new BookUpdateView(new ArrayList<String>(), updatedBook);
     }
 
-//    public Boolean checkISBNFormatting(String ISBNTen, String ISBNThirteen){
-//        if(ISBNThirteen.matches("978" + ISBNTen + )){}
-//    }
+    public Boolean checkISBNFormatting(String ISBNTen, String ISBNThirteen){
+        if(ISBNThirteen.matches("978" + ISBNTen + "[0-9]")){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
 }
 

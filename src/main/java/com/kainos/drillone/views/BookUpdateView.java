@@ -7,7 +7,7 @@ import java.util.List;
 
 public class BookUpdateView extends View {
 
-    private final List<String> errors;
+    public final List<String> errors;
     private final Book book;
 
     public BookUpdateView(List<String> errors, Book book) {
