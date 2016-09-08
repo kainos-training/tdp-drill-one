@@ -19,6 +19,11 @@ public class DataStore {
 		bookCount++;
 		Book book = new Book(bookCount, authorFirstName, authorLastName, title, ISBNTen, ISBNThirteen);
 		books.add(book);
+	}
 
+	public Book getBookById(int id){
+		List<Book> bookList = getBooks();
+		Book book = bookList.stream().filter(theBook -> theBook.getId() == id ).findFirst().get();
+		return book;
 	}
 }

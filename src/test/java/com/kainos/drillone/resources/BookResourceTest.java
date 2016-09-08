@@ -34,18 +34,14 @@ public class BookResourceTest {
         dataStore = mock(DataStore.class);
         resource = new BookResource(dataStore, configuration);
     }
-
     @Test
     public void Index_WhenCalledForEmptyList_ReturnsViewWithEmptyList(){
         when(dataStore.getBooks()).thenReturn(new ArrayList<Book>());
-
         LibrarianView view = (LibrarianView)resource.LibrarianView();
-
         verify(dataStore).getBooks();
         assertEquals(view.getLibrary().size(), 0);
-        assertEquals("/Views/Book/books.ftl", view.getTemplateName());
+        assertEquals("/Views/book/books.ftl", view.getTemplateName());
     }
-
     @Test
     public void Index_WhenCalledForEmptyList_ReturnsViewWithPopulatedList(){
         List<Book> books = new ArrayList<Book>();
@@ -56,9 +52,7 @@ public class BookResourceTest {
         book.setAuthorFirstName("chris");
         book.setAuthorSurname("gill");
         book.setId(1);
-
         books.add(book);
-
         book = new Book();
         book.setIsbnTen("1234567540");
         book.setIsbnThirteen("12345as790123");
@@ -66,13 +60,9 @@ public class BookResourceTest {
         book.setAuthorFirstName("chris");
         book.setAuthorSurname("gill");
         book.setId(2);
-
         books.add(book);
-
         when(dataStore.getBooks()).thenReturn(books);
-
         LibrarianView view = (LibrarianView)resource.LibrarianView();
-
         verify(dataStore).getBooks();
         assertEquals(view.getLibrary().size(), 2);
         assertEquals("1234567540", books.get(1).getIsbnTen());
@@ -81,7 +71,7 @@ public class BookResourceTest {
         assertEquals("chris", books.get(1).getAuthorFirstName());
         assertEquals("gill", books.get(1).getAuthorSurname());
         assertEquals(2, books.get(1).getId());
-        assertEquals("/Views/Book/books.ftl", view.getTemplateName());
+        assertEquals("/Views/book/books.ftl", view.getTemplateName());
     }
 
     @Test
@@ -94,6 +84,4 @@ public class BookResourceTest {
     public void AddBook_WhenCorrectDetailsEntered_WebApplicationExceptionThrown() {
         resource.AddBook("Test", "Aoife", "Finnegan", "1234567890", "978-1234567890*");
     }
-
-
 }
