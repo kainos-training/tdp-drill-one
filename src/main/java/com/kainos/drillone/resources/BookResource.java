@@ -75,7 +75,7 @@ public class BookResource {
     }
 
     public Boolean checkISBNFormatting(String ISBNTen, String ISBNThirteen){
-        if( !(ISBNTen.length() == 10) || !(ISBNThirteen.length() == 13)){return false;}
+        if( (ISBNTen.length() != 10) || (ISBNThirteen.length() != 13)){return false;}
         if(ISBNThirteen.matches("978" + ISBNTen + "[0-9]")){
             return true;
         }else{
