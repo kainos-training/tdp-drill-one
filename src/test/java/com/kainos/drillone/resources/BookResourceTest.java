@@ -46,7 +46,7 @@ public class BookResourceTest {
         book.setIsbnTen("1234567890");
         book.setIsbnThirteen("1234567890123");
         book.setTitle("programming 101");
-        book.setAuthorfirstName("chris");
+        book.setAuthorFirstName("chris");
         book.setAuthorSurname("gill");
         book.setId(1);
 
@@ -56,7 +56,7 @@ public class BookResourceTest {
         book.setIsbnTen("1234567540");
         book.setIsbnThirteen("12345as790123");
         book.setTitle("agile 101");
-        book.setAuthorfirstName("chris");
+        book.setAuthorFirstName("chris");
         book.setAuthorSurname("gill");
         book.setId(2);
 
@@ -71,7 +71,7 @@ public class BookResourceTest {
         assertEquals("1234567540", books.get(1).getIsbnTen());
         assertEquals("12345as790123", books.get(1).getIsbnThirteen());
         assertEquals("agile 101", books.get(1).getTitle());
-        assertEquals("chris", books.get(1).getAuthorfirstName());
+        assertEquals("chris", books.get(1).getAuthorFirstName());
         assertEquals("gill", books.get(1).getAuthorSurname());
         assertEquals(2, books.get(1).getId());
         assertEquals("/Views/Book/books.ftl", view.getTemplateName());

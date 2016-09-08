@@ -13,7 +13,7 @@ public class DataStore {
 		book.setIsbnTen("1234567890");
 		book.setIsbnThirteen("1234567890123");
 		book.setTitle("programming 101");
-		book.setAuthorfirstName("chris");
+		book.setAuthorFirstName("chris");
 		book.setAuthorSurname("gill");
 		book.setId(1);
 
@@ -23,7 +23,7 @@ public class DataStore {
 		book.setIsbnTen("1234567540");
 		book.setIsbnThirteen("12345as790123");
 		book.setTitle("agile 101");
-		book.setAuthorfirstName("chris");
+		book.setAuthorFirstName("chris");
 		book.setAuthorSurname("gill");
 		book.setId(2);
 
@@ -32,7 +32,7 @@ public class DataStore {
 		book.setIsbnTen("1234567540");
 		book.setIsbnThirteen("12345as790123");
 		book.setTitle("agile 102");
-		book.setAuthorfirstName("chris");
+		book.setAuthorFirstName("chris");
 		book.setAuthorSurname("gill");
 		book.setId(3);
 
@@ -42,7 +42,7 @@ public class DataStore {
 		book.setIsbnTen("12345s7540");
 		book.setIsbnThirteen("12341as790123");
 		book.setTitle("java for dummies");
-		book.setAuthorfirstName("chris");
+		book.setAuthorFirstName("chris");
 		book.setAuthorSurname("gill");
 		book.setId(4);
 

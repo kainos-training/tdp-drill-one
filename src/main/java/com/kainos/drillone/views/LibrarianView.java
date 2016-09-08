@@ -9,9 +9,9 @@ public class LibrarianView extends View {
 
     private final List<Book> library;
 
-    public LibrarianView(List<Book> people) {
+    public LibrarianView(List<Book> bookList) {
         super("/Views/Book/books.ftl");
-        this.library = people;
+        this.library = bookList;
     }
 
     public List<Book> getLibrary() {

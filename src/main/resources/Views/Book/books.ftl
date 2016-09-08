@@ -5,7 +5,7 @@
 <@layoutTemplate.layout>
 
 <h1>KLibrary</h1>
-<p class="lead">Librarian tools</p>
+<p class="lead">Books</p>
 
 <table class="table">
     <thead>
@@ -19,7 +19,7 @@
                     <td>
                         <b>${book.title}</b>
                         <br>
-                        by ${book.authorfirstName} ${book.authorSurname}
+                        by ${book.authorFirstName} ${book.authorSurname}
                         <br>
                         ISBN10: ${book.isbnTen}
                          <br>
@@ -27,7 +27,6 @@
                     </td>
                     </tr>
         </#list>
-
     </tbody>
 </table>
 
