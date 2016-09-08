@@ -56,15 +56,17 @@ public class BookResource {
         System.out.println(id + title + authorFname + ISBNTen + ISBNThirteen);
         Book updatedBook = dataStore.getBookById(id);
 
-        List<String> errors = Lists.newArrayList();
+        List<String> errors = Validate(title, authorFname, authorLname, ISBNTen, ISBNThirteen);
 
-        if(!Strings.isNullOrEmpty(authorFname) && !Strings.isNullOrEmpty(authorLname)
-                && !Strings.isNullOrEmpty(title)) {
-            updatedBook.setAuthorFirstName(authorFname);
-            updatedBook.setAuthorSurname(authorLname);
-            updatedBook.setTitle(title);
-        }else{
-            errors.add("You must enter a Title and Author");
+        if(!Strings.isNullOrEmpty(ISBNTen)){
+            if(ISBNTen.length() != 10){
+                errors.add("ISBN Ten must be 10 characters long");
+            }
+        }
+        if(!Strings.isNullOrEmpty(ISBNThirteen)){
+            if(ISBNTen.length() != 15){
+                errors.add("ISBN Thirteen must be 15 characters long");
+            }
         }
 
         //If 1 ISBN is entered, add that ISBN.
