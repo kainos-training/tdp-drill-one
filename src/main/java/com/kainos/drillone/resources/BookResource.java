@@ -33,7 +33,7 @@ public class BookResource {
     public BookResource(DataStore dataStore, DrillOneConfiguration configuration) {
         this.dataStore = dataStore;
         this.configuration = configuration;
-        dataStore.mockList();
+
     }
 
     @Path("update")

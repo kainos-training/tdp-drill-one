@@ -48,30 +48,22 @@ public class DataStore {
 
 		books.add(book);
 	}
-
 	public List<Book> getBooks() {
 		return books;
 	}
-
 	public Book getBookById(int id){
 		List<Book> bookList = getBooks();
-		System.out.println("=== id" + id);
 		Book book = bookList.stream().filter(theBook -> theBook.getId() == id ).findFirst().get();
-
 		return book;
 	}
-
-	public void mockList(){
-		Book booklet1 = new Book(1, "Jer", "person", "lol", "haha", "143");
-		Book booklet2 = new Book(2, "Laddy", "McSass", "A Good Day on the Beach", "10374123423", "1430723409723");
-		Book booklet3 = new Book(3, "Franco","Manca", "Dank Kush: a Love Story", "103741234345", "1435289362923");
-
-
-		books.add(booklet1);
-		books.add(booklet2);
-		books.add(booklet3);
-	}
-
+//	public void mockList(){
+//		Book booklet1 = new Book(1, "Jer", "person", "lol", "haha", "143");
+//		Book booklet2 = new Book(2, "Laddy", "McSass", "A Good Day on the Beach", "10374123423", "1430723409723");
+//		Book booklet3 = new Book(3, "Franco","Manca", "Dank Kush: a Love Story", "103741234345", "1435289362923");
+//		books.add(booklet1);
+//		books.add(booklet2);
+//		books.add(booklet3);
+//}
 	public void updateBook(int id, String author, String title, String ISBNTen, String ISBNThirteen) {
 		Book book = getBookById(id);
 		book.setAuthorFirstName(author);
