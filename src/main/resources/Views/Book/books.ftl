@@ -25,6 +25,7 @@
                          <br>
                         ISBN13: ${book.isbnThirteen}
                     </td>
+                    <td><a class="btn btn-default" href="/books/borrow" align="right">Borrow Book</a></td>
                     </tr>
         </#list>
     </tbody>

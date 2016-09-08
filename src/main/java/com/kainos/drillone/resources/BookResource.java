@@ -5,6 +5,7 @@ import com.kainos.drillone.DataStore;
 import com.kainos.drillone.config.DrillOneConfiguration;
 import com.kainos.drillone.models.Book;
 import com.kainos.drillone.views.BookAddView;
+import com.kainos.drillone.views.BookBorrowView;
 import com.kainos.drillone.views.LibrarianView;
 import io.dropwizard.views.View;
 import org.assertj.core.util.Lists;
@@ -41,6 +42,13 @@ public class BookResource {
         return new LibrarianView(books);
     }
 
+    @Path("/borrow")
+    @GET
+    @Timed
+    @Produces(MediaType.TEXT_HTML)
+    public View BookBorrowView(){
+        return new BookBorrowView(new ArrayList<String>());
+    }
 
     @Path("/add")
     @GET
@@ -119,5 +127,25 @@ public class BookResource {
         return errors;
     }
 
+    @Path("/borrowbook")
+    @POST
+    @Timed
+    @Produces(MediaType.TEXT_HTML)
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    public View Borrow(
+            @FormDataParam("borrower") String borrower
+    ){
+        List<String> errors = Lists.newArrayList();
+
+        if (!errors.isEmpty()) {
+            return new BookBorrowView(errors);
+        }
+
+        //dataStore.addBook(title, authorFirstName, authorLastName, ISBN10, ISBN13);
+
+        URI bookListUri = UriBuilder.fromUri("/books/librarian").build();
+        Response response = Response.seeOther(bookListUri).build();
+        throw new WebApplicationException(response); // valid way to redirect in dropwizard
+    }
 }
 

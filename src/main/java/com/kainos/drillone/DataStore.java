@@ -19,6 +19,14 @@ public class DataStore {
 		bookCount++;
 		Book book = new Book(bookCount, authorFirstName, authorLastName, title, ISBNTen, ISBNThirteen);
 		books.add(book);
+	}
 
+	public void borrowBook(int Id, String borrower, boolean borrowed){
+		for (Book book: books) {
+			if(book.getId()==Id){
+				book.setBorrowed(borrowed);
+				book.setBorrower(borrower);
+			}
+		}
 	}
 }

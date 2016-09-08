@@ -13,6 +13,10 @@ public class Book {
 
     private String isbnThirteen;
 
+    private boolean borrowed;
+
+    private String borrower;
+
     public Book(){};
 
     public Book(int id, String authorFirstName, String authorSurname, String title, String isbnTen, String isbnThirteen){
@@ -22,6 +26,8 @@ public class Book {
         this.setTitle(title);
         this.setIsbnTen(isbnTen);
         this.setIsbnThirteen(isbnThirteen);
+        this.setBorrower("");
+        this.setBorrowed(false);
     }
 
 
@@ -37,9 +43,7 @@ public class Book {
         return authorFirstName;
     }
 
-    public void setAuthorFirstName(String authorFirstName) {
-        this.authorFirstName = authorFirstName;
-    }
+    public void setAuthorFirstName(String authorFirstName) { this.authorFirstName = authorFirstName; }
 
     public String getTitle() {
         return title;
@@ -72,4 +76,16 @@ public class Book {
     public void setAuthorSurname(String authorSurname) {
         this.authorSurname = authorSurname;
     }
+
+    public String getBorrower() {
+        return borrower;
+    }
+
+    public void setBorrower(String borrower) {
+        this.borrower = borrower;
+    }
+
+    public boolean isBorrowed() { return borrowed; }
+
+    public void setBorrowed(boolean borrowed) {this.borrowed=borrowed;}
 }
