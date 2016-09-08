@@ -20,7 +20,7 @@
                 ${book.title}
             </td>
             <td>
-                ${book.authorfirstName} ${book.authorSurname}
+                ${book.authorFirstName} ${book.authorSurname}
             </td>
             <td>
                 ${book.isbnTen} / ${book.isbnThirteen}
