@@ -10,6 +10,7 @@ import com.kainos.drillone.views.LibrarianView;
 import io.dropwizard.views.View;
 import org.assertj.core.util.Strings;
 import org.glassfish.jersey.media.multipart.FormDataParam;
+import org.joda.time.DateTime;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -86,6 +87,8 @@ public class BookResource {
         if(!errors.isEmpty()){
             return new BookUpdateView(errors, updatedBook);
         }
+
+        updatedBook.setLastModified(DateTime.now());
 
         URI bookListUri = UriBuilder.fromUri("/books/librarian").build();
         Response response = Response.seeOther(bookListUri).build();

@@ -1,5 +1,7 @@
 package com.kainos.drillone.models;
 
+import org.joda.time.DateTime;
+
 public class Book {
     private int Id;
 
@@ -12,6 +14,8 @@ public class Book {
     private String isbnTen;
 
     private String isbnThirteen;
+
+    private DateTime lastModified;
 
     public Book(){};
 
@@ -71,5 +75,13 @@ public class Book {
 
     public void setAuthorSurname(String authorSurname) {
         this.authorSurname = authorSurname;
+    }
+
+    public DateTime getLastModified() {
+        return lastModified;
+    }
+
+    public void setLastModified(DateTime lastModified) {
+        this.lastModified = lastModified;
     }
 }
