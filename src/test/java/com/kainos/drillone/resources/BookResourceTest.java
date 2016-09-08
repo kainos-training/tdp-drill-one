@@ -87,12 +87,12 @@ public class BookResourceTest {
     @Test
     public void AddBook_WhenTitleEmpty_ReturnsToBookAddView(){
         List<String> errors = Lists.newArrayList();
-        assertThat(resource.AddBook("", "Aoife", "Finnegan", "1234567890", "978-1234567890*"), is(instanceOf(BookAddView.class)));
+        assertThat(resource.AddBook("", "Aoife", "Finnegan", "1234567890", "978-1234567890*", ""), is(instanceOf(BookAddView.class)));
     }
 
     @Test(expected = WebApplicationException.class)
     public void AddBook_WhenCorrectDetailsEntered_WebApplicationExceptionThrown() {
-        resource.AddBook("Test", "Aoife", "Finnegan", "1234567890", "978-1234567890*");
+        resource.AddBook("Test", "Aoife", "Finnegan", "1234567890", "978-1234567890*", "");
     }
 
 

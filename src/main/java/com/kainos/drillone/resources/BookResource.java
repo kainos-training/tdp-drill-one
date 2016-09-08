@@ -60,23 +60,25 @@ public class BookResource {
             @FormDataParam("authorFirstName") String authorFirstName,
             @FormDataParam("authorLastName") String authorLastName,
             @FormDataParam("ISBN10") String ISBN10,
-            @FormDataParam("ISBN13") String ISBN13
+            @FormDataParam("ISBN13") String ISBN13,
+            @FormDataParam("bookImageLink") String bookImageLink
     ){
-        List<String> errors = Validate(title, authorFirstName, authorLastName, ISBN10, ISBN13);
+        List<String> errors = Validate(title, authorFirstName, authorLastName, ISBN10, ISBN13, bookImageLink);
         Lists.newArrayList();
 
         if (!errors.isEmpty()) {
             return new BookAddView(errors);
         }
 
-        dataStore.addBook(title, authorFirstName, authorLastName, ISBN10, ISBN13);
+        dataStore.addBook(title, authorFirstName, authorLastName, ISBN10, ISBN13, bookImageLink);
 
         URI bookListUri = UriBuilder.fromUri("/books/librarian").build();
         Response response = Response.seeOther(bookListUri).build();
         throw new WebApplicationException(response); // valid way to redirect in dropwizard
     }
 
-    public List<String> Validate(String title, String authorFirstName, String authorLastName, String ISBN10, String ISBN13){
+    public List<String> Validate(String title, String authorFirstName, String authorLastName, String ISBN10, String ISBN13,
+                                 String bookImageLink){
         List<String> errors = Lists.newArrayList();
         if (Strings.isNullOrEmpty(title)) {
             errors.add("Enter a valid book title");

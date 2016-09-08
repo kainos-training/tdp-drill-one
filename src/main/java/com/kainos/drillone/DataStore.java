@@ -16,9 +16,10 @@ public class DataStore {
 		return books;
 	}
 
-	public void addBook(String title, String authorFirstName, String authorLastName, String ISBNTen, String ISBNThirteen) {
+	public void addBook(String title, String authorFirstName, String authorLastName, String ISBNTen, String ISBNThirteen,
+                        String bookImageLink) {
 		bookCount++;
-		Book book = new Book(bookCount, authorFirstName, authorLastName, title, ISBNTen, ISBNThirteen);
+		Book book = new Book(bookCount, authorFirstName, authorLastName, title, ISBNTen, ISBNThirteen, bookImageLink);
 		books.add(book);
 
 	}

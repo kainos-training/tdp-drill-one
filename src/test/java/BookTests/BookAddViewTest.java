@@ -27,8 +27,8 @@ public class BookAddViewTest {
     public void AddBook_WhenBookTitleEmpty_ReturnsEmptyTitleError(){
         List<String> errors = org.assertj.core.util.Lists.newArrayList();
         errors.add("Enter a valid book title");
+        BookAddView resultView = (BookAddView)bookResource.AddBook("", "Aoife", "Finnegan", "1234567890", "978-1234567890*", "");
 
-        BookAddView resultView = (BookAddView)bookResource.AddBook("", "Aoife", "Finnegan", "1234567890", "978-1234567890*");
 
         Assert.assertEquals(errors, resultView.getErrors());
     }

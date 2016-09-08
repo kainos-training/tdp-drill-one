@@ -48,6 +48,13 @@
         <p class="help-block">E.g. 978-9482762512*</p>
     </div>
 
+    <div class="form-group">
+        <label for="bookImageLink">Image URL </label>
+        <input name="bookImageLink" type="text" placeholder="Book Image Link" class="form-control" />
+        <p class="help-block">E.g. https://cdn3.kainos.com/wp-content/themes/kainos.com/images/Kainos-Logo.png?050318 </p>
+    </div>
+
+
     <input type="submit" value="Add Book" class="btn btn-primary" />
     <a class="btn btn-default" href="/books/librarian">Cancel</a>
 

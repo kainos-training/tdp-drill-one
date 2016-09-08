@@ -3,7 +3,7 @@ package com.kainos.drillone.models;
 import org.assertj.core.util.Strings;
 
 public class Book {
-    private int Id;
+    private int id;
 
     private String authorFirstName;
 
@@ -17,7 +17,7 @@ public class Book {
 
     private String bookImageLink;
 
-    private String defaultBookImageLink="https://images-na.ssl-images-amazon.com/images/I/51tjK8swIOL.jpg";
+    private String defaultBookImageLink="/assets/images/default.png";
 
     public Book(){};
 
@@ -45,19 +45,17 @@ public class Book {
         this.setTitle(title);
         this.setIsbnTen(isbnTen);
         this.setIsbnThirteen(isbnThirteen);
-        this.setBookImageLink("https://images-na.ssl-images-amazon.com/images/I/51tjK8swIOL.jpg");
-        System.out.print(bookImageLink);
 
     }
 
 
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getAuthorFirstName() {
@@ -101,11 +99,7 @@ public class Book {
     }
 
     public String getBookImageLink() {
-        if(this.bookImageLink == null){
-            return "https://images-na.ssl-images-amazon.com/images/I/51tjK8swIOL.jpg";
-        }else{
             return this.bookImageLink;
-        }
     }
 
     public void setBookImageLink(String bookLink) {this.bookImageLink = bookLink;}
