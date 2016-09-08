@@ -1,6 +1,7 @@
 <#-- @ftlvariable name="" type="com.kainos.drillone.views.LibrarianView" -->
 <#import "../layout.ftl" as layoutTemplate>
 
+
 <@layoutTemplate.layout>
 
 <h1>KLibrary</h1>
@@ -32,3 +33,9 @@
 </table>
 
 </@layoutTemplate.layout>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".table").DataTable();
+    });
+</script>
