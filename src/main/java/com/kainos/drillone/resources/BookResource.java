@@ -58,12 +58,21 @@ public class BookResource {
             errors.add("You must enter a Title and Author");
         }
 
-        //Make sure at least one ISBN is entered
-        if(!Strings.isNullOrEmpty(ISBNTen) || !Strings.isNullOrEmpty(ISBNThirteen)) {
+        //If 1 ISBN is entered, add that ISBN.
+        if(!Strings.isNullOrEmpty(ISBNTen) ^ !Strings.isNullOrEmpty(ISBNThirteen)) {
             updatedBook.setISBNTen(ISBNTen);
             updatedBook.setISBNThirteen(ISBNThirteen);
         }else{
-            errors.add("You must enter at least one form of ISBN");
+            //If two ISBNs are entered, make sure they match
+            if(!Strings.isNullOrEmpty(ISBNTen) && !Strings.isNullOrEmpty(ISBNThirteen)){
+                if(checkISBNFormatting(ISBNTen, ISBNThirteen)){
+                    updatedBook.setISBNTen(ISBNTen);
+                    updatedBook.setISBNThirteen(ISBNThirteen);
+                }else{errors.add("Your ISBN numbers don't match.");}
+            //If none are entered, make sure user is alerted to enter one.
+            }else {
+                errors.add("You must enter at least one form of ISBN");
+            }
         }
         if(!errors.isEmpty()){
             return new BookUpdateView(errors, updatedBook);
