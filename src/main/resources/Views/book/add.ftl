@@ -22,8 +22,8 @@
     <input type = "hidden" name="ID" type="text" />
 
     <div class="form-group">
-        <label for="bookTitle">Book Title</label>
-        <input name="bookTitle" type="text" placeholder="Book Title" class="form-control" required />
+        <label for="title">Book Title</label>
+        <input name="title" type="text" placeholder="Book Title" class="form-control" required />
     </div>
 
     <div class="form-group">
@@ -39,11 +39,13 @@
     <div class="form-group">
         <label for="ISBN10">10-digit ISBN</label>
         <input name="ISBN10" type="text" placeholder="ISBN" class="form-control" />
+        <p class="help-block">E.g. 948762512</p>
     </div>
 
     <div class="form-group">
         <label for="ISBN13">13-digit ISBN</label>
         <input name="ISBN13" type="text" placeholder="ISBN" class="form-control" />
+        <p class="help-block">E.g. 978-948762512*</p>
     </div>
 
     <input type="submit" value="Add Book" class="btn btn-primary" />

@@ -75,7 +75,31 @@ public class BookResource {
             errors.add("Enter at least one ISBN number");
         }
 
-        UUID idForNewPerson = UUID.randomUUID();
+        if(!Strings.isNullOrEmpty(ISBN10)){
+            if(ISBN10.length() != 10){
+                errors.add("Enter a valid 10-digit ISBN");
+            }
+        }
+
+        if(!Strings.isNullOrEmpty(ISBN13)){
+            if(ISBN13.length() != 15){
+                errors.add("Enter a valid 13-digit ISBN");
+            } else {
+                if(ISBN13.contains("-")){
+                    String[] ISBNComponents = ISBN13.split("-");
+                    if(ISBNComponents[0].equals("978") && ISBNComponents[1].length() == 11 && ISBNComponents[1].charAt(ISBNComponents[1].length()-1) == '*') {
+                    } else {
+                        errors.add("Enter a valid 13-digit ISBN");
+                    }
+                } else {
+                    errors.add("Enter a valid 13-digit ISBN");
+                }
+            }
+        }
+
+        if (!errors.isEmpty()) {
+            return new BookAddView(errors);
+        }
 
         LOGGER.info("Adding book " + String.format("title: %s author first name: %s author last name: %s ISBN10: %s ISBN13: %s", title, authorFirstName, authorLastName, ISBN10, ISBN13));
         dataStore.addBook(title, authorFirstName, authorLastName, ISBN10, ISBN13);
