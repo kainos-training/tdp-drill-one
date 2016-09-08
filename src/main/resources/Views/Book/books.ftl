@@ -21,7 +21,9 @@
                         <br>
                         by ${book.authorfirstName} ${book.authorSurname}
                         <br>
-                        ISBN: ${book.isbnTen} / ${book.isbnThirteen}
+                        ISBN10: ${book.isbnTen}
+                         <br>
+                        ISBN13: ${book.isbnThirteen}
                     </td>
                     </tr>
         </#list>
