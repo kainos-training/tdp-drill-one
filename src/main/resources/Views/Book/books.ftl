@@ -4,7 +4,7 @@
 <@layoutTemplate.layout>
 
 <h1>KLibrary</h1>
-<p class="lead">Librarian tools</p>
+<p class="lead">Books</p>
 
 <table class="table">
     <thead>

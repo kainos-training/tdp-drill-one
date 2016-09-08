@@ -26,7 +26,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="/books/librarian">Librarian</a></li>
+            <li><a href="/books/librarian">Books</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
