@@ -25,13 +25,14 @@
                          <br>
                         ISBN13: ${book.isbnThirteen}
                         <br>
-                        <a href="/books/update?id=${book.id}" class="btn btn-defaul">Update</a>
+                        <a href="/books/update?id=${book.id}" class="btn btn-default">Update</a>
                     </td>
                     </tr>
         </#list>
     </tbody>
 </table>
 
+<a class="btn btn-default" href="/books/add">Add Book</a>
 </@layoutTemplate.layout>
 
 <script type="text/javascript">
