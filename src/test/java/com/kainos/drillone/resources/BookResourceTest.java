@@ -4,14 +4,20 @@ package com.kainos.drillone.resources;
 import com.kainos.drillone.DataStore;
 import com.kainos.drillone.config.DrillOneConfiguration;
 import com.kainos.drillone.models.Book;
+import com.kainos.drillone.views.BookAddView;
 import com.kainos.drillone.views.LibrarianView;
+import org.assertj.core.util.Lists;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.ws.rs.WebApplicationException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;
 
 /**
@@ -77,4 +83,17 @@ public class BookResourceTest {
         assertEquals(2, books.get(1).getId());
         assertEquals("/Views/Book/books.ftl", view.getTemplateName());
     }
+
+    @Test
+    public void AddBook_WhenTitleEmpty_ReturnsToBookAddView(){
+        List<String> errors = Lists.newArrayList();
+        assertThat(resource.AddBook("", "Aoife", "Finnegan", "1234567890", "978-1234567890*"), is(instanceOf(BookAddView.class)));
+    }
+
+    @Test(expected = WebApplicationException.class)
+    public void AddBook_WhenCorrectDetailsEntered_WebApplicationExceptionThrown() {
+        resource.AddBook("Test", "Aoife", "Finnegan", "1234567890", "978-1234567890*");
+    }
+
+
 }

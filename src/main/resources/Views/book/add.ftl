@@ -39,21 +39,17 @@
     <div class="form-group">
         <label for="ISBN10">10-digit ISBN</label>
         <input name="ISBN10" type="text" placeholder="ISBN" class="form-control" />
-        <p class="help-block">E.g. 948762512</p>
+        <p class="help-block">E.g. 9482762512</p>
     </div>
 
     <div class="form-group">
         <label for="ISBN13">13-digit ISBN</label>
         <input name="ISBN13" type="text" placeholder="ISBN" class="form-control" />
-        <p class="help-block">E.g. 978-948762512*</p>
+        <p class="help-block">E.g. 978-9482762512*</p>
     </div>
 
     <input type="submit" value="Add Book" class="btn btn-primary" />
     <a class="btn btn-default" href="/books/librarian">Cancel</a>
 
-
-
 </form>
-
-
 </@layoutTemplate.layout>

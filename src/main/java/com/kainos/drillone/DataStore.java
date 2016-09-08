@@ -3,8 +3,6 @@ package com.kainos.drillone;
 import com.google.common.collect.Lists;
 import com.kainos.drillone.models.Book;
 
-import javax.xml.crypto.Data;
-import java.util.ArrayList;
 import java.util.List;
 
 public class DataStore {
@@ -19,7 +17,7 @@ public class DataStore {
 
 	public void addBook(String title, String authorFirstName, String authorLastName, String ISBNTen, String ISBNThirteen) {
 		bookCount++;
-		Book book = new Book(bookCount, title, authorFirstName, authorLastName, ISBNTen, ISBNThirteen);
+		Book book = new Book(bookCount, authorFirstName, authorLastName, title, ISBNTen, ISBNThirteen);
 		books.add(book);
 
 	}

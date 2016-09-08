@@ -9,9 +9,7 @@ import com.kainos.drillone.views.LibrarianView;
 import io.dropwizard.views.View;
 import org.assertj.core.util.Lists;
 import org.assertj.core.util.Strings;
-import org.assertj.core.util.SystemProperties;
 import org.glassfish.jersey.media.multipart.FormDataParam;
-import org.slf4j.Logger;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -64,10 +62,22 @@ public class BookResource {
             @FormDataParam("ISBN10") String ISBN10,
             @FormDataParam("ISBN13") String ISBN13
     ){
+        List<String> errors = Validate(title, authorFirstName, authorLastName, ISBN10, ISBN13);
+        Lists.newArrayList();
 
-        System.out.println("book add hit");
+        if (!errors.isEmpty()) {
+            return new BookAddView(errors);
+        }
+
+        dataStore.addBook(title, authorFirstName, authorLastName, ISBN10, ISBN13);
+
+        URI bookListUri = UriBuilder.fromUri("/books/librarian").build();
+        Response response = Response.seeOther(bookListUri).build();
+        throw new WebApplicationException(response); // valid way to redirect in dropwizard
+    }
+
+    public List<String> Validate(String title, String authorFirstName, String authorLastName, String ISBN10, String ISBN13){
         List<String> errors = Lists.newArrayList();
-
         if (Strings.isNullOrEmpty(title)) {
             errors.add("Enter a valid book title");
         }
@@ -106,15 +116,7 @@ public class BookResource {
             }
         }
 
-        if (!errors.isEmpty()) {
-            return new BookAddView(errors);
-        }
-
-        dataStore.addBook(title, authorFirstName, authorLastName, ISBN10, ISBN13);
-
-        URI bookListUri = UriBuilder.fromUri("/books/librarian").build();
-        Response response = Response.seeOther(bookListUri).build();
-        throw new WebApplicationException(response); // valid way to redirect in dropwizard
+        return errors;
     }
 
 }
