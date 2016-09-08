@@ -8,14 +8,19 @@
 
 <table class="table">
     <thead>
+        <th>Unique book id</th>
         <th>Title</th>
         <th>Author</th>
-        <th>ISBN</th>
+        <th>ISBN 10</th>
+        <th>ISBN 13</th>
     </thead>
 
     <tbody>
         <#list library as book>
             <tr>
+            <td>
+                ${book.id}
+            </td>
             <td>
                 ${book.title}
             </td>
@@ -23,7 +28,10 @@
                 ${book.authorFirstName} ${book.authorSurname}
             </td>
             <td>
-                ${book.isbnTen} / ${book.isbnThirteen}
+                ${book.isbnTen}
+            </td>
+            <td>
+                ${book.isbnThirteen}
             </td>
             </tr>
         </#list>
