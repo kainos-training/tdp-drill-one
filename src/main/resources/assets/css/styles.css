@@ -48,7 +48,7 @@ div.books_img img {
     float: left;
     height: 140px;
     width: 100px;
-    background-image: url("https://images-na.ssl-images-amazon.com/images/I/51tjK8swIOL.jpg");
+    background-image: url("/assets/images/default.png");
     background-size: cover;
     margin-right: 10px;
     background-position: top center;
