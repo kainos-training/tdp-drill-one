@@ -4,7 +4,7 @@
 <@layoutTemplate.layout>
 
 <h1>Update a book</h1>
-<p class="lead">Please provide details of the book.</p>
+<p class="lead">Please update the appropriate details of the book.</p>
 
 <form enctype="multipart/form-data" action="/book/update" method="post" autocomplete="off">
 
@@ -20,6 +20,7 @@
         </div>
     </#if>
 
+    <input type="hidden" name="id" value="${book.id}" />
 
     <div class="form-group">
         <label for="title">Title</label>
@@ -31,11 +32,11 @@
     </div>
     <div class="form-group">
         <label for="ISBNTen">ISBN Ten</label>
-        <input name="ISBNTen" type="text" placeholder="title" class="form-control" required value ="${book.ISBNTen}"/>
+        <input name="ISBNTen" type="text" placeholder="title" class="form-control" value ="${book.ISBNTen}"/>
      </div>
      <div class="form-group">
              <label for="ISBNThirteen">ISBN Thirteen</label>
-             <input name="ISBNThirteen" type="text" placeholder="title" class="form-control" required
+             <input name="ISBNThirteen" type="text" placeholder="title" class="form-control"
              value ="${book.ISBNThirteen}"/>
      </div>
 
