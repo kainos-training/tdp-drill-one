@@ -36,7 +36,7 @@
      </div>
      <div class="form-group">
              <label for="ISBNThirteen">ISBN Thirteen</label>
-             <input name="ISBNThirteen" type="text" placeholder="978-" class="form-control"
+             <input name="ISBNThirteen" type="text" placeholder="XXX-XXXXXXXXXXX" class="form-control"
              value ="${book.ISBNThirteen}"/>
      </div>
 

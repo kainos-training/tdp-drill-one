@@ -1,10 +1,12 @@
 package com.kainos.drillone.resources;
 
+import com.codahale.metrics.annotation.Timed;
 import com.google.common.collect.Lists;
 import com.kainos.drillone.DataStore;
 import com.kainos.drillone.config.DrillOneConfiguration;
 import com.kainos.drillone.models.Book;
 import com.kainos.drillone.views.BookUpdateView;
+import com.kainos.drillone.views.LibrarianView;
 import io.dropwizard.views.View;
 import org.assertj.core.util.Strings;
 import org.glassfish.jersey.media.multipart.FormDataParam;
@@ -28,7 +30,6 @@ public class BookResource {
     public BookResource(DataStore dataStore, DrillOneConfiguration configuration) {
         this.dataStore = dataStore;
         this.configuration = configuration;
-        dataStore.mockList();
     }
 
     @Path("update")
@@ -52,7 +53,7 @@ public class BookResource {
         List<String> errors = Lists.newArrayList();
 
         if(!Strings.isNullOrEmpty(author) && !Strings.isNullOrEmpty(title)) {
-            updatedBook.setAuthor(author);
+            updatedBook.setAuthorFirstName(author);
             updatedBook.setTitle(title);
         }else{
             errors.add("You must enter a Title and Author");
@@ -60,14 +61,14 @@ public class BookResource {
 
         //If 1 ISBN is entered, add that ISBN.
         if(!Strings.isNullOrEmpty(ISBNTen) ^ !Strings.isNullOrEmpty(ISBNThirteen)) {
-            updatedBook.setISBNTen(ISBNTen);
-            updatedBook.setISBNThirteen(ISBNThirteen);
+            updatedBook.setIsbnTen(ISBNTen);
+            updatedBook.setIsbnThirteen(ISBNThirteen);
         }else{
             //If two ISBNs are entered, make sure they match
             if(!Strings.isNullOrEmpty(ISBNTen) && !Strings.isNullOrEmpty(ISBNThirteen)){
                 if(checkISBNFormatting(ISBNTen, ISBNThirteen)){
-                    updatedBook.setISBNTen(ISBNTen);
-                    updatedBook.setISBNThirteen(ISBNThirteen);
+                    updatedBook.setIsbnTen(ISBNTen);
+                    updatedBook.setIsbnThirteen(ISBNThirteen);
                 }else{errors.add("Your ISBN numbers don't match.");}
             //If none are entered, make sure user is alerted to enter one.
             }else {
@@ -92,5 +93,13 @@ public class BookResource {
         }
     }
 
-}
+    @GET
+    @Timed
+    @Path("librarian")
+    @Produces(MediaType.TEXT_HTML)
+    public View LibrarianView(){
 
+        List<Book> books = dataStore.getBooks();
+        return new LibrarianView(books);
+    }
+}

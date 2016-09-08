@@ -37,14 +37,14 @@ public class UpdateBookTest {
     public void testUpdateViewToCheckIfBookDetailsGetChanged(){
         Book book = dataStore.getBookById(1);
         int id = book.getId();
-        String author = book.getAuthor();
-        String ISBNTen = book.getISBNTen();
-        String ISBNThirteen = book.getISBNThirteen();
+        String author = book.getAuthorFirstName();
+        String ISBNTen = book.getIsbnTen();
+        String ISBNThirteen = book.getIsbnThirteen();
 
         resources.doUpdate(1,"TestTitle","TestAuthor","1234567891","978-12345678915");
-        assertTrue(author != book.getAuthor());
-        assertTrue(ISBNTen != book.getISBNTen());
-        assertTrue(ISBNThirteen != book.getISBNThirteen());
+        assertTrue(author != book.getAuthorFirstName());
+        assertTrue(ISBNTen != book.getIsbnTen());
+        assertTrue(ISBNThirteen != book.getIsbnThirteen());
 
         }
 

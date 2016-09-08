@@ -3,8 +3,8 @@
 
 <@layoutTemplate.layout>
 
-<h1>Discovery Diary Starter application</h1>
-<p class="lead">You can use this application for getting started on the agile drill.</p>
+<h1>KLibrary</h1>
+<p class="lead">You can use this application to borrow or find out details of books available within Kainos.</p>
 
 
 </@layoutTemplate.layout>
